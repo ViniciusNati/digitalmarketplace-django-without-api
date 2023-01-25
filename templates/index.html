@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Posts</h1>
+    <!--filtra todos posts-->
+    {% for Post in object_list %}
+    {% if Post.published == True %}
+    <h1>Titulo: <a href="post/{{Post.slug}}">{{Post.title}}</a></h1>
+    <b>User: <a href="profile/{{Post.user}}">{{Post.user}}</a></br>
+    <b>Preço:{{Post.price}}</br>
+    <b>Link: <a href="post/{{ Post.slug }}">link</a> <!--<b>Link: <a href="{{ Post.slug }}-->
+
+    {% endif %}
+
+    {%empty%}
+    Acabaram os Posts.
+    {% endfor %}
+</body>
+</html>
